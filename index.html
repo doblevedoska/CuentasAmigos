@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío Entregable: Eventos - Walter Acosta</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <h1>💰 CALCULAR GASTOS COMPARTIDOS 💰</h1>
+    <h2>Simulador interactivo: Calcula los gastos compartidos, totales, individuales y deudas entre 3 amigos</h2>
+    <div class="contenedor">
+        <div class="contenedor-carga">
+            <div id="carga-amigos">
+                <p>Ingresar el nombre de los 3 amigos que van a compartir gastos:</p>
+                <form id="formulario-amigos">
+                    <p id="mensaje"></p>
+                    <input id="amigo1" type="text" placeholder="Nombre del amigo" autocomplete="off">
+                    <input id="amigo2" type="text" placeholder="Nombre del amigo" autocomplete="off">
+                    <input id="amigo3" type="text" placeholder="Nombre del amigo" autocomplete="off">
+                    <input id="submit-carga" type="submit" value="Cargar Amigos">
+                </form>
+
+
+            </div>
+            <p id="mensaje-post-carga"></p>
+            <div class="carga-gastos">               
+                <form id="formulario-gastos">
+                    <p>Cargar gasto de amigo:</p>
+                    <input id="nombre-amigo-gasto" type="text" placeholder="Nombre del amigo" autocomplete="off" >
+                    <input id="gasto" type="number" placeholder="Monto gastado" autocomplete="off" >
+                    <input id="submit-gasto" type="submit" value="Cargar Gasto">
+                </form>
+                <p id="mensaje-gasto"></p>
+
+
+            </div>
+            <div class="calculo-gastos">           
+                <form id="formulario-calculo">
+                    <p>Gastos Compartidos:</p>
+                    <input id="submit-calculo" type="submit" value="Calcular Gastos" >
+                </form>
+                <div id="mensajes-calculo">
+                    <p id="mensaje-gasto-total"></p>
+                    <p id="mensaje-gasto-invidual"></p>
+                    <p id="mensaje-deuda-1"></p>
+                    <p id="mensaje-deuda-2"></p>
+                    <p id="mensaje-deuda-3"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="contenedor-resultados">
+
+        </div>
+
+    </div>
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>

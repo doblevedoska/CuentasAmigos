@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "Play";
+    src: url("../assets/fonts/Play-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Play-Bold";
+    src: url("../assets/fonts/Play-Bold.ttf");
+}
+
+body {
+    background-attachment: fixed;
+    background-color: #d9ed92;
+    background-image: linear-gradient(135deg, #d9ed92 0%, #52b69a 100%);
+    font-family: "Play";
+    color: #354f52;
+}
+
+h1 {
+    font-family: "Play-Bold";
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 1px #354f52;
+}  
+
+h2 {
+    text-align: center;
+}
+
+.contenedor {
+    border: solid 2px #ffffff;
+    border-radius: 20px;
+    height: 560px;
+}
+
+.contenedor-carga {
+    padding: 20px;
+    height: 50px;
+}
+
+#amigo1, #amigo2, #amigo3, #nombre-amigo-gasto, #gasto {
+    border: solid 2px #52b69a;
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 40px;
+    /* color: #354f52; */
+    font-family: "Play";
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+#formulario-gastos, #formulario-calculo {
+    display: none;
+}
+
+#submit-carga, #submit-gasto {
+    border: solid 2px #52b69a;
+    background-color: #52b69a;
+    border-radius: 10px;
+    height: 45px;
+    color: #fff;
+    font-family: "Play";
+    margin-left: 10px;
+    text-align: center;
+    width: 180px;
+    font-size: 16px;
+}
+
+#submit-calculo {
+    border: solid 2px #1b4965;
+    background-color: #669bbc;
+    border-radius: 10px;
+    height: 45px;
+    color: #fff;
+    font-family: "Play";
+    margin-left: 10px;
+    text-align: center;
+    width: 180px;
+    font-size: 16px;
+}
+
+#submit-carga:hover, #submit-gasto:hover {
+    border: solid 2px #fff;
+}
+
+#submit-calculo:hover {
+    border: solid 2px #fff;
+}
+
+#mensaje-gasto, #mensaje-post-carga{
+    color: #035c67;
+    font-weight: bold;
+}
+
+#mensaje-gasto-total, #mensaje-gasto-invidual, #mensaje-deuda-1, #mensaje-deuda-2, #mensaje-deuda-3 {
+    color: #035c67;
+    font-weight: bold;
+    size: 15px;
+}
+/* .carga-gastos {
+    display: none;
+} */
+
