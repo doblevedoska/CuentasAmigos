@@ -31,7 +31,12 @@ function Amigo(nombre){
     this.mensajeDeuda = "";
 }
 
-const listaAmigos = [];
+let listaAmigos = JSON.parse(localStorage.getItem('listaAmigos'));
+
+
+
+
+
 
 
 function validarFormularioAmigo (e) {
@@ -51,6 +56,7 @@ function validarFormularioAmigo (e) {
         let amigoTres = new Amigo(amigo3.value);
         amigoTres.nombre = amigoTres.nombre.toUpperCase();
         listaAmigos.push(amigoTres);
+        localStorage.setItem('listaAmigos', JSON.stringify(listaAmigos));
         
         mjePostCarga.innerHTML = `👉Cargaste exitosamente a ${listaAmigos[0].nombre}, ${listaAmigos[1].nombre} & ${listaAmigos[2].nombre}. Habilitado para comenzar la carga de gastos.`;
         formularioAmigos.style.display = 'none';
@@ -60,6 +66,21 @@ function validarFormularioAmigo (e) {
 
 
 }
+
+
+const verificarStorage = () => {
+    if (!!listaAmigos && listaAmigos.length > 0){
+        mjePostCarga.innerHTML = `👉Cargaste exitosamente a ${listaAmigos[0].nombre}, ${listaAmigos[1].nombre} & ${listaAmigos[2].nombre}. Habilitado para comenzar la carga de gastos.`;
+        formularioAmigos.style.display = 'none';
+        formularioGastos.style.display = 'block';
+        formularioCalculo.style.display = 'block';
+    }
+    else{
+        listaAmigos = [];
+    }
+}
+
+verificarStorage();
 
 
 formularioAmigos.addEventListener("submit", validarFormularioAmigo);
