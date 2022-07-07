@@ -28,6 +28,16 @@
             <div class="carga-gastos">               
                 <form id="formulario-gastos">
                     <p>Cargar gasto de amigo:</p>
+                    <!-- <select id="plazo" type="number" name="plazo" placeholder="Plazo "class="form-control"> 
+                        <script type="text/javascript"> 
+                            document.write("<option>" + "Seleccione Plazo" + "</option>" );
+                            document.write("<option>" + 3 + "</option>" );
+                            document.write("<option>" + 6 + "</option>" );
+                            document.write("<option>" + 12 + "</option>" );
+                            document.write("<option>" + 24 + "</option>" );
+                            document.write("<option>" + 36 + "</option>" );
+                        </script>   
+                    </select>   -->
                     <input id="nombre-amigo-gasto" type="text" placeholder="Nombre del amigo" autocomplete="off" >
                     <input id="gasto" type="number" placeholder="Monto gastado" autocomplete="off" >
                     <input id="submit-gasto" type="submit" value="Cargar Gasto">
@@ -58,7 +68,8 @@
         </div>
 
     </div>
-    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/script.js"></script>
+    
 </body>
 </html>

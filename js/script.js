@@ -42,7 +42,12 @@ let listaAmigos = JSON.parse(localStorage.getItem('listaAmigos'));
 function validarFormularioAmigo (e) {
     e.preventDefault();
     if (amigo1.value == "" || amigo2.value == "" || amigo3.value == ""){
-        mjePostCarga.innerHTML = `👉 Debes completar los nombres de todos los amigos..`;
+        //Mensaje de error de carga de amigos con Sweet Alert
+        Swal.fire({
+            icon: 'error',
+            title: 'No tan rápido!...',
+            text: 'Debes cargar los nombres de los 3 amigos primero.'
+        })
         }
     else{
         let amigoUno = new Amigo(amigo1.value);
@@ -57,8 +62,13 @@ function validarFormularioAmigo (e) {
         amigoTres.nombre = amigoTres.nombre.toUpperCase();
         listaAmigos.push(amigoTres);
         localStorage.setItem('listaAmigos', JSON.stringify(listaAmigos));
-        
-        mjePostCarga.innerHTML = `👉Cargaste exitosamente a ${listaAmigos[0].nombre}, ${listaAmigos[1].nombre} & ${listaAmigos[2].nombre}. Habilitado para comenzar la carga de gastos.`;
+        //Mensaje de éxito de carga de amigos con Sweet Alert
+        Swal.fire({
+            icon: 'success',
+            title: '👍 Perfecto!...',
+            text: `Cargaste exitosamente a ${listaAmigos[0].nombre}, ${listaAmigos[1].nombre} & ${listaAmigos[2].nombre}. Habilitado para comenzar la carga de gastos.`
+        })
+        //mjePostCarga.innerHTML = `👉Cargaste exitosamente a ${listaAmigos[0].nombre}, ${listaAmigos[1].nombre} & ${listaAmigos[2].nombre}. Habilitado para comenzar la carga de gastos.`;
         formularioAmigos.style.display = 'none';
         formularioGastos.style.display = 'block';
         formularioCalculo.style.display = 'block';
