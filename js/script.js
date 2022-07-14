@@ -20,8 +20,12 @@ const mensajeDeuda1 = document.getElementById('mensaje-deuda-1');
 const mensajeDeuda2 = document.getElementById('mensaje-deuda-2');
 const mensajeDeuda3 = document.getElementById('mensaje-deuda-3');
 const submitCalculo = document.getElementById('submit-calculo');
-const mensajesCalculo = document.getElementById('mensajes-calculo');
 
+const mensajesCalculo = document.getElementById('mensajes-calculo');
+const mensajesCurrency = document.getElementById('mensajes-currency');
+const mensajeUsd = document.getElementById('mensaje-usd');
+const mensajeEuro = document.getElementById('mensaje-euro');
+const mensajeReal = document.getElementById('mensaje-real');
 
 
 function Amigo(nombre){
@@ -32,10 +36,6 @@ function Amigo(nombre){
 }
 
 let listaAmigos = JSON.parse(localStorage.getItem('listaAmigos'));
-
-
-
-
 
 
 
@@ -154,6 +154,9 @@ function determinarSituacion(deudaAmigo) {
 
 
 // 
+formularioCalculo.addEventListener("submit", calcularGasto);
+
+
 
 
 function calcularGasto (e) {
@@ -183,16 +186,40 @@ function calcularGasto (e) {
     mensajesCalculo.style.padding = '10px';
     mensajesCalculo.style.textAlign = 'center';
 
-
+    const calcularCurrency = async () =>{
+        const respuesta = await fetch('../currency.json');
+        const resultados = await respuesta.json();
+    
+            console.log(resultados);
+            // console.log(resultados[0].cotizacion*gastoTotal.toFixed(2));
+            mensajeUsd.innerHTML = `🇺🇸 El gasto total en ${resultados[0].nombre} es de ${resultados[0].simbolo}: ${(resultados[0].cotizacion*gastoTotal).toFixed(2)}.`;
+            mensajeEuro.innerHTML = `🇪🇺 El gasto total en ${resultados[1].nombre} es de  ${resultados[1].simbolo}: ${(resultados[1].cotizacion*gastoTotal).toFixed(2)}.`;
+            mensajeReal.innerHTML = `🇧🇷 El gasto total en ${resultados[2].nombre} es de  ${resultados[2].simbolo}: ${(resultados[2].cotizacion*gastoTotal).toFixed(2)}.`;
+    
+            // }).catch(error =>{
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Reintentar...',
+            //         text: 'No se pudo cargar la lista de currency.'
+            //     })
+            // }).finally()
+    
+    
+    }
+    
+    calcularCurrency();
 
 }
 
 
 
 
-formularioCalculo.addEventListener("submit", calcularGasto);
 
-console.log(listaAmigos);
+
+
+
+
+// console.log(listaAmigos);
 // console.log(gastoTotal);
 // console.log(gastoIndividual);
 
