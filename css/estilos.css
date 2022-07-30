@@ -97,7 +97,14 @@ h2 {
     font-weight: bold;
     size: 15px;
 }
-/* .carga-gastos {
-    display: none;
-} */
 
+
+
+#mensajes-calculo, #mensajes-currency {
+    display: none;
+    background-color: #d9ed92;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+}

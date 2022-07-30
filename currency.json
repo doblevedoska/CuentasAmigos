@@ -2,21 +2,21 @@
     {
         "id": 1,
         "nombre": "Dólares",
-        "image": "../assets/img/usa.png",
+        "image": "../assets/img/currency1.png",
         "simbolo": "U$D",
         "cotizacion": 0.007814
     },
     {
         "id": 2,
         "nombre": "Euros",
-        "image": "../assets/img/europe.png",
+        "image": "../assets/img/currency2.png",
         "simbolo": "€",
         "cotizacion": 0.007846
     },
     {
         "id": 3,
         "nombre": "Reales",
-        "image": "../assets/img/brazil.png",
+        "image": "../assets/img/currency3.png",
         "simbolo": "R$",
         "cotizacion": 0.043
     }

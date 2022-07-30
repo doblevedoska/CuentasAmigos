@@ -1,5 +1,5 @@
 
-// EVENTOS INPUTS
+// DOM
 
 const amigo1 = document.getElementById('amigo1');
 const amigo2 = document.getElementById('amigo2');
@@ -20,7 +20,6 @@ const mensajeDeuda1 = document.getElementById('mensaje-deuda-1');
 const mensajeDeuda2 = document.getElementById('mensaje-deuda-2');
 const mensajeDeuda3 = document.getElementById('mensaje-deuda-3');
 const submitCalculo = document.getElementById('submit-calculo');
-
 const mensajesCalculo = document.getElementById('mensajes-calculo');
 const mensajesCurrency = document.getElementById('mensajes-currency');
 const mensajeUsd = document.getElementById('mensaje-usd');
@@ -117,7 +116,11 @@ function validarFormularioGasto (e) {
             break;
 
         default: 
-            mensajeGasto.innerHTML = 'No existe el nombre del amigo.';
+            Swal.fire({
+                icon: 'error',
+                title: 'No tan rápido!...',
+                text: 'No existe ese amigo en la lista de los que cargaste'
+            })
             break;
     }
     nombreAmigoGasto.value = '';
@@ -125,10 +128,6 @@ function validarFormularioGasto (e) {
 }
 
 formularioGastos.addEventListener("submit", validarFormularioGasto);
-
-
-
-
 
 
 //Funcion que calcula las deudas
@@ -152,13 +151,11 @@ function determinarSituacion(deudaAmigo) {
 }
 
 
-
-// 
 formularioCalculo.addEventListener("submit", calcularGasto);
 
 
 
-
+//Funcion que calcula el gasto total e individual de cada amigo
 function calcularGasto (e) {
     e.preventDefault();
     let gastoTotal = listaAmigos[0].gasto + listaAmigos[1].gasto + listaAmigos[2].gasto;
@@ -176,53 +173,24 @@ function calcularGasto (e) {
     submitCalculo.style.display = 'none';
 
     mensajeGastoTotal.innerHTML = `💸 Total de Gastos $${gastoTotal.toFixed(2)}`;
+    mensajeGasto.style.display = 'none';
     mensajeDeudaInd.innerHTML = `✏️ Total de Gastos por Amigo $${gastoIndividual.toFixed(2)}`;
     mensajeDeuda1.innerHTML = `👤 ${listaAmigos[0].nombre} gastó $${listaAmigos[0].gasto.toFixed(2)}. ${listaAmigos[0].mensajeDeuda} de $${listaAmigos[0].deuda.toFixed(2)}.`;
     mensajeDeuda2.innerHTML = `👤 ${listaAmigos[1].nombre} gastó $${listaAmigos[1].gasto.toFixed(2)}. ${listaAmigos[1].mensajeDeuda} de $${listaAmigos[1].deuda.toFixed(2)}.`;
     mensajeDeuda3.innerHTML = `👤 ${listaAmigos[2].nombre} gastó $${listaAmigos[2].gasto.toFixed(2)}. ${listaAmigos[2].mensajeDeuda} de $${listaAmigos[2].deuda.toFixed(2)}.`;
 
-    mensajesCalculo.style.backgroundColor = '#d9ed92';
-    mensajesCalculo.style.borderRadius = '15px';
-    mensajesCalculo.style.padding = '10px';
-    mensajesCalculo.style.textAlign = 'center';
+    mensajesCalculo.style.display = 'block';
+    mensajesCurrency.style.display = 'block';
+    mensajesCurrency.style.backgroundColor = '#94d2bd';
+
+    //Funcion que calcula el gasto total en 3 monedas extranjeras distintas a partir del JSON utilizando AJAX
 
     const calcularCurrency = async () =>{
         const respuesta = await fetch('../currency.json');
         const resultados = await respuesta.json();
-    
-            console.log(resultados);
-            // console.log(resultados[0].cotizacion*gastoTotal.toFixed(2));
             mensajeUsd.innerHTML = `🇺🇸 El gasto total en ${resultados[0].nombre} es de ${resultados[0].simbolo}: ${(resultados[0].cotizacion*gastoTotal).toFixed(2)}.`;
             mensajeEuro.innerHTML = `🇪🇺 El gasto total en ${resultados[1].nombre} es de  ${resultados[1].simbolo}: ${(resultados[1].cotizacion*gastoTotal).toFixed(2)}.`;
             mensajeReal.innerHTML = `🇧🇷 El gasto total en ${resultados[2].nombre} es de  ${resultados[2].simbolo}: ${(resultados[2].cotizacion*gastoTotal).toFixed(2)}.`;
-    
-            // }).catch(error =>{
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'Reintentar...',
-            //         text: 'No se pudo cargar la lista de currency.'
-            //     })
-            // }).finally()
-    
-    
     }
-    
     calcularCurrency();
-
 }
-
-
-
-
-
-
-
-
-
-// console.log(listaAmigos);
-// console.log(gastoTotal);
-// console.log(gastoIndividual);
-
-
-
-
